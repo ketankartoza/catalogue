@@ -2,23 +2,23 @@ name: Publish docs via GitHub Pages
 on:
   push:
     branches:
-      - master
+      - master  # Ensure this matches your branch name
 
 jobs:
   build:
     name: Deploy docs
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
-        uses: actions/checkout@v4
+      - name: Checkout master
+        uses: actions/checkout@v4  # Fixed name
         
-      - name: Create Mkdocs Config 🚀
+      - name: Create MkDocs Config 🚀
         working-directory: ./docs
-        run: ./create-mkdocs-html-config.sh        
+        run: ./create-mkdocs-html-config.sh  # Ensure this script exists and is executable
 
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CONFIG_FILE: /docs/mkdocs.yml
+          CONFIG_FILE: docs/mkdocs.yml  # Fixed path
           EXTRA_PACKAGES: build-base
