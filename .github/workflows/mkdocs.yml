@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master  # Ensure this matches your branch name
+  workflow_dispatch:  # Allows manual runs from Actions tab
 
 jobs:
   build:
@@ -10,15 +11,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout master
-        uses: actions/checkout@v4  # Fixed name
-        
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: pip install mkdocs mkdocs-material mkdocs-video qrcode
+
+      - name: Verify MkDocs installation
+        run: mkdocs --version  # Debugging step
+
       - name: Create MkDocs Config 🚀
         working-directory: ./docs
-        run: ./create-mkdocs-html-config.sh  # Ensure this script exists and is executable
+        run: ./create-mkdocs-html-config.sh  # Ensure this script exists
+
+      - name: Build MkDocs Site
+        run: mkdocs build --config-file docs/mkdocs.yml  # Adjust path if needed
 
       - name: Deploy docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CONFIG_FILE: docs/mkdocs.yml  # Fixed path
+          CONFIG_FILE: docs/mkdocs.yml
           EXTRA_PACKAGES: build-base
