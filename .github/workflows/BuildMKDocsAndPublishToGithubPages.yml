@@ -19,6 +19,7 @@ jobs:
         with:
           packages: |
             mkdocs-material 
+            mkdocs-video
             qrcode
 
       - name: Create Mkdocs Config 🚀
