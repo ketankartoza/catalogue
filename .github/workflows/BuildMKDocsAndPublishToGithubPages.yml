@@ -22,7 +22,7 @@ jobs:
 
       - name: Ensure read and write permissions for docs directory
         run: |
-          chmod -R +rw docs  # Grant read and write permissions to all files and directories inside docs
+          chmod -R 777 docs  # Grant full read/write permissions to all files and directories inside docs
 
       - name: Check the contents of docs directory
         run: |
@@ -35,10 +35,12 @@ jobs:
       - name: Build MkDocs site
         run: |
           mkdocs build --config-file docs/mkdocs.yml  # Build the MkDocs site
-          ls -R docs/site  # List contents of the site directory after build to check if it's created
+          echo "Site files after build:"
+          ls -R docs/site  # List contents of docs/site after build
 
       - name: List contents of the site directory
-        run: ls -R docs/site  # Ensure the build generated files in the 'docs/site' folder
+        run: |
+          ls -R docs/site  # Ensure the build generated files in the 'docs/site' folder
 
       - name: Deploy docs to GitHub Pages
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
