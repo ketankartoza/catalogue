@@ -1,4 +1,5 @@
 name: Build MKDocs And Publish To Github Pages
+
 on:
   push:
     branches:
@@ -10,21 +11,28 @@ jobs:
   build:
     name: Deploy docs
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout main from github
+      - name: Checkout main from GitHub
         uses: actions/checkout@v4
 
       - name: Install dependencies
-        run:
-            python -m pip install --upgrade pip
-            pip install -r REQUIREMENTS.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # Make sure this file is in the root of your repo
 
       - name: Create Mkdocs Config 🚀
         working-directory: ./docs
         run: ./create-mkdocs-html-config.sh  # Ensure this script exists and is executable
 
+      - name: Build MkDocs site
+        run: |
+          mkdocs build --config-file docs/mkdocs.yml  # Build the MkDocs site
+
       - name: Deploy docs to GitHub Pages
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        with:
+          folder: site  # Make sure you're deploying the generated `site/` folder
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CONFIG_FILE: docs/mkdocs.yml
