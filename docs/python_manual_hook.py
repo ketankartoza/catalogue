@@ -22,7 +22,7 @@ date: 2023-08-03
     	"migrations",
         "tests",
         ]
-    for root, dirs, files in os.walk("../django_project"):
+    for root, dirs, files in os.walk("django_project"):
         for file in files:
              file = os.path.join(root, file)
              ignored = False
