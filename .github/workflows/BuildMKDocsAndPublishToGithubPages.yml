@@ -20,9 +20,13 @@ jobs:
         run: |
           pip install -r docs/requirements.txt  # Ensure this file is in the correct location
 
-      - name: Ensure permissions to read docs directory
+      - name: Ensure read and write permissions for docs directory
         run: |
-          chmod -R +r docs  # Grant read permissions to all files and directories inside docs
+          chmod -R +rw docs  # Grant read and write permissions to all files and directories inside docs
+
+      - name: Check the contents of docs directory
+        run: |
+          ls -R docs  # List all files and directories inside docs to ensure they exist
 
       - name: Create Mkdocs Config 🚀
         working-directory: ./docs
@@ -31,14 +35,15 @@ jobs:
       - name: Build MkDocs site
         run: |
           mkdocs build --config-file docs/mkdocs.yml  # Build the MkDocs site
+          ls -R docs/site  # List contents of the site directory after build to check if it's created
 
       - name: List contents of the site directory
-        run: ls -R ./site  # Ensure the build generated files in the 'site' folder
+        run: ls -R docs/site  # Ensure the build generated files in the 'docs/site' folder
 
       - name: Deploy docs to GitHub Pages
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
         with:
-          folder: site  # Make sure you're deploying the generated `site/` folder
+          folder: docs/site  # Make sure you're deploying the generated 'docs/site' folder
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CONFIG_FILE: docs/mkdocs.yml
