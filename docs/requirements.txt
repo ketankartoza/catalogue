@@ -1,3 +1,6 @@
+mkdocs
+mkdocs-material
+mkdocstrings
 
 mkdocs-with-pdf
 mkdocs-material>=9.5.32
