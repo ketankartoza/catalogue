@@ -18,7 +18,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r REQUIREMENTS.txt  # Make sure this file is in the root of your repo
+          pip install -r REQUIREMENTS.txt
 
       - name: Create Mkdocs Config 🚀
         working-directory: ./docs
@@ -26,7 +26,10 @@ jobs:
 
       - name: Build MkDocs site
         run: |
-          mkdocs build --config-file docs/mkdocs.yml  # Build the MkDocs site
+          mkdocs build --config-file docs/mkdocs.yml
+          
+      - name: List contents of the site directory
+        run: ls -R ./site  # Ensure the build generated files in the 'site' folder
 
       - name: Deploy docs to GitHub Pages
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
