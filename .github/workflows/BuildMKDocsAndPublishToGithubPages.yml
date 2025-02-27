@@ -18,7 +18,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install mkdocs mkdocs-video mkdocs-material mkdocstrings mkdocs-with-pdf mdx_gh_links mkdocs-pdf-export-plugin mkdocstrings-python mkdocs-redirects mkdocs-enumerate-headings-plugin mkdocs-git-revision-date-localized-plugin shortuuid black
+          pip install mkdocs mkdocs-video     
+          pip install mkdocs-material mkdocstrings mkdocs-with-pdf
+          pip install mdx_gh_links mkdocs-pdf-export-plugin
+          pip install mkdocstrings-python mkdocs-redirects
+          pip install mkdocs-enumerate-headings-plugin mkdocs-git-revision-date-localized-plugin
+          pip install shortuuid black
 
       - name: Ensure read and write permissions for docs directory
         run: |
