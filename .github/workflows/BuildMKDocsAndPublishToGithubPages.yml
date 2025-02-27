@@ -24,6 +24,10 @@ jobs:
         run: |
           chmod -R 777 docs  # Grant full read/write permissions to all files and directories inside docs
 
+      - name: Ensure read and write permissions for site directory
+        run: |
+          chmod -R 777 docs/site  # Grant full read/write permissions to all files and directories inside docs/site
+
       - name: Check the contents of docs directory
         run: |
           ls -R docs  # List all files and directories inside docs to ensure they exist
