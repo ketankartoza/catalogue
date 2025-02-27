@@ -39,9 +39,9 @@ gdata==2.0.17
 # (dependency of dateutils) is a beta release.
 # git+https://github.com/timlinux/python-dateutils.git@c67ee1932d678b82d65aa69ee35b07791d1c0364
 # git+https://github.com/PaulUithol/backbone-tastypie.git
-git+https://github.com/cmheisel/nose-xcover.git#egg=nosexcover
+# git+https://github.com/cmheisel/nose-xcover.git#egg=nosexcover
 # git+https://github.com/dodobas/pycsw.git@db_view
-git+https://github.com/gak/pygooglechart.git
+# git+https://github.com/gak/pygooglechart.git
 django-jenkins==0.14.1
 html5lib==0.90
 jslint==0.6.0
