@@ -16,3 +16,7 @@ license: This program is free software; you can redistribute it and/or modify it
 * **[Sign Up](./sign-up.md):** You can use this page to walk through the signup process.
 
 * **[Login](./login.md):** You can use this page to walk through the login process.
+
+* **[Data Summary Page](./data-summary-page.md):** You can use this page to walk through the data summary page.
+
+* **[Search](./search-page.md):** You can use this page as a walkthrough to learn how to access the search page.

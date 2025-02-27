@@ -21,3 +21,7 @@ you may prefer to work through our [user guide](../guide/index.md).
 * **[Sign Up](./sign-up.md):** Users can use this page to walk through the signup process.
 
 * **[Login](./login.md):** Users can use this page to walk through the login process.
+
+* **[Data Summary Page](./data-summary-page.md):** Users can use this page to walk through the `Data Summary` page. 
+
+* **[Search](./search-page.md):** Users can use this page as a walkthrough to learn how to access the search page.
